@@ -59,4 +59,5 @@ def chat_proxy():
     except requests.RequestException as e:
         logger.exception("Backend request failed: %s", e)
         return jsonify({"error": "Failed to reach backend"}), 502
-        
+    except ValueError:
+        return resp.text, resp.status_code
